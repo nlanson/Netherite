@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { BlockchainService } from './services/blockchain.service';
 
-declare let window: any;
 
 @Component({
   selector: 'app-root',
@@ -9,6 +8,14 @@ declare let window: any;
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+
+
+  constructor(
+    private bcs: BlockchainService
+  ) {
+
+  }
 
   async ngOnInit() {
 
