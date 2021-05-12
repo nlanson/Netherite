@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import GoldStack from '../../../../abis/GoldStack.json';
-import GoldSwap from '../../../../abis/GoldSwap.json';
+import GoldStack from '../../../Token/GoldStack/abis/GoldStack.json';
+import GoldSwap from '../../../Token/GoldStack/abis/GoldSwap.json';
 
 declare let window: any;
 

@@ -85,8 +85,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [],
@@ -99,8 +98,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [],
@@ -113,16 +111,14 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [],
       "name": "buyTokens",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function",
-      "payable": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -135,8 +131,7 @@
       "name": "sellTokens",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function",
-      "payable": true
+      "type": "function"
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract GoldStack\",\"name\":\"_token\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"rate\",\"type\":\"uint256\"}],\"name\":\"TokensPurchased\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"rate\",\"type\":\"uint256\"}],\"name\":\"TokensSold\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"buyTokens\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"goldStack\",\"outputs\":[{\"internalType\":\"contract GoldStack\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"rate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"sellTokens\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/C/Users/Nlanson/Desktop/Coding/GoldStack/token/GoldStack/contracts/GoldSwap.sol\":\"GoldSwap\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/Nlanson/Desktop/Coding/GoldStack/token/GoldStack/contracts/GoldStack.sol\":{\"keccak256\":\"0xc97248740ac5fff975431054842f95dd164d865e4879383146813bbad127e2fd\",\"urls\":[\"bzz-raw://35af735cef96a8380f843c57d6c2324b7260ee31350e7725b6fbf45c4510bb03\",\"dweb:/ipfs/QmYAg91vY6hJRbQhPxaNf4n8DRk7wJEvkEa7NVzUCqEaLp\"]},\"/C/Users/Nlanson/Desktop/Coding/GoldStack/token/GoldStack/contracts/GoldSwap.sol\":{\"keccak256\":\"0xf55f5a332cb5a5a108db1cc129dee008d508c94a48a14954211ed9faec5bb2bc\",\"urls\":[\"bzz-raw://f8fef4a1fb839f4e3bb1601e1fb0c5b01848ef956d3758c17a37f661c05fdb25\",\"dweb:/ipfs/QmYYHEsiVPcXsv5h8zZQkemiN31MJQk2J255L67UQhgmud\"]}},\"version\":1}",
@@ -9326,17 +9321,9 @@
     "name": "solc",
     "version": "0.8.4+commit.c7e474f2.Emscripten.clang"
   },
-  "networks": {
-    "5777": {
-      "events": {},
-      "links": {},
-      "address": "0x1d47428e8A06b05EddD65b0F68565ee82EE7A1B8",
-      "transactionHash": "0xd765099f52ac2213d6d67246514e7bda1bc8cd7bb9a94b8f0831de0f367168b8"
-    }
-  },
+  "networks": {},
   "schemaVersion": "3.4.0",
-  "updatedAt": "2021-05-12T12:11:44.614Z",
-  "networkType": "ethereum",
+  "updatedAt": "2021-05-12T12:30:42.099Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
