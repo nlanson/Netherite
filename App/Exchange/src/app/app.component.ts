@@ -19,6 +19,7 @@ export class AppComponent {
   async connectWeb3() {
     await this.web3Service.connectWeb3();
     await this.web3Service.loadAccounts();
+    await this.web3Service.loadContracts();
 
     this.account = this.web3Service.accounts[0];
     this.balance = await this.web3Service.getBalance(this.account);
