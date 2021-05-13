@@ -1,10 +1,10 @@
 pragma solidity ^0.8.4;
 
-import "./GoldStack.sol";
+import "./Netherite.sol";
 
-contract GoldSwap {
-    string public name = "GoldStack Exchange";
-    GoldStack public goldStack;
+contract NetherSwap {
+    string public name = "Netherite Exchange";
+    Netherite public netherite;
     uint public rate = 64; //Exchange rate.
     
     event TokensPurchased(
@@ -21,8 +21,8 @@ contract GoldSwap {
         uint rate
     );
 
-    constructor(GoldStack _token) {
-        goldStack = _token;
+    constructor(Netherite _token) {
+        netherite = _token;
     }
 
     function buyTokens() public payable {
@@ -30,13 +30,13 @@ contract GoldSwap {
         uint tokenAmount = msg.value * 64; //Set tokenAmount to the amount of Ether received times 100.
 
         //Require that EthSwap address has enough tokens.
-        require(goldStack.balanceOf(address(this)) >= tokenAmount); //The exchange must have more than or equal amount of the requested tokenAmount to proceed.
+        require(netherite.balanceOf(address(this)) >= tokenAmount); //The exchange must have more than or equal amount of the requested tokenAmount to proceed.
 
         //Transfer tokens to the user
-        goldStack.transfer(msg.sender, tokenAmount); //Transfer the tokens to the buyers address.
+        netherite.transfer(msg.sender, tokenAmount); //Transfer the tokens to the buyers address.
 
         //Emit the TokenPurchased Event
-        emit TokensPurchased(msg.sender, address(goldStack), tokenAmount, rate);
+        emit TokensPurchased(msg.sender, address(netherite), tokenAmount, rate);
     }
 
     
@@ -48,18 +48,18 @@ contract GoldSwap {
         uint etherAmount = _amount / rate;
 
         //User cant sell more tokens that they have
-        require(goldStack.balanceOf(msg.sender) >= _amount);
+        require(netherite.balanceOf(msg.sender) >= _amount);
 
         //Require EthSwap to have enough ether to redeem the tokens.
         require(address(this).balance >= etherAmount);
 
         //Transfer tokens from user, to EthSwap of amount.
-        goldStack.transferFrom(msg.sender, address(this), _amount);
+        netherite.transferFrom(msg.sender, address(this), _amount);
 
         //Send ether to the msg sender.
         sender.transfer(etherAmount);
 
         //Emit the TokensSold event
-        emit TokensSold(msg.sender, address(goldStack), _amount, rate);
+        emit TokensSold(msg.sender, address(netherite), _amount, rate);
     }
 }

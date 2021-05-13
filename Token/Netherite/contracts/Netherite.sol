@@ -1,8 +1,8 @@
 pragma solidity ^0.8.4;
 
-contract GoldStack {
-    string  public name = "GoldStack";
-    string  public symbol = "Gold";
+contract Netherite {
+    string  public name = "Netherite";
+    string  public symbol = "NETH";
     uint256 public totalSupply = 1000000000000000000000000; // 1 million tokens
     uint8   public decimals = 18;
 

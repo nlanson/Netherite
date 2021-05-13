@@ -26,8 +26,8 @@ module.exports = {
     }
     //End Ropsten
   },
-  contracts_directory: './GoldStack/contracts/',
-  contracts_build_directory: './GoldStack/abis/', //Smart contracts compile into the src/abis folder so that the react app can import it and use it.
+  contracts_directory: './Netherite/contracts/',
+  contracts_build_directory: './Netherite/abis/', //Smart contracts compile into the src/abis folder so that the react app can import it and use it.
   compilers: {
     solc: {
       version: "0.8.4",
