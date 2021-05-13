@@ -1,13 +1,13 @@
-<div *ngIf="web3Service.isWeb3">
+<div *ngIf="loading">
+  loading...
+</div>
+
+<div *ngIf="!loading">
   Yay!
   <br><br>
   You are using account: {{ account }}
   <br>
   It has a balance of {{ balance }} ETH
-</div>
-
-<div *ngIf="!web3Service.isWeb3">
-  Nay :(
-  <br><br>
-  <button (click)="connectWeb3()">Connect</button>
+  <br>
+  It has {{ nethBalance }} Netherite in it's inventory
 </div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import GoldStack from '../../../Token/GoldStack/abis/GoldStack.json';
-import GoldSwap from '../../../Token/GoldStack/abis/GoldSwap.json';
+import Netherite from '../../../../Token/Netherite/abis/Netherite.json';
+import NetherSwap from '../../../../Token/Netherite/abis/NetherSwap.json';
 
 declare let window: any;
 
@@ -15,8 +15,8 @@ export class Web3Service {
   web3: any;
   accounts: Array<any> = [];
 
-  goldStack: any;
-  goldSwap: any;
+  netherite: any;
+  netherSwap: any;
 
   constructor() { }
 
@@ -49,7 +49,7 @@ export class Web3Service {
   }
 
   //Get Ether Balance of Account.
-  async getBalance(account: string): Promise<string> {
+  async getEtherBalance(account: string): Promise<string> {
     const web3 = window.web3;
 
     let bal = await web3.eth.getBalance(account);
@@ -61,17 +61,17 @@ export class Web3Service {
     const networkID = await window.web3.eth.net.getId(); //Get the current network ID that metamask is connected to.
 
 
-    const tokenData = GoldStack.networks[networkID];
+    const tokenData = Netherite.networks[networkID];
     if ( tokenData ) {
-      this.goldStack = new window.web3.eth.Contract(GoldStack.abi, tokenData.address);
+      this.netherite = new window.web3.eth.Contract(Netherite.abi, tokenData.address);
     } else {
       window.alert('Token contract not deployed to connected network.')
     }
 
 
-    const goldSwapData = GoldSwap.networks[networkID];
+    const goldSwapData = NetherSwap.networks[networkID];
     if ( goldSwapData ) {
-      this.goldSwap = new window.web3.eth.Contract(GoldSwap.abi, goldSwapData.address);
+      this.netherSwap = new window.web3.eth.Contract(NetherSwap.abi, goldSwapData.address);
     } else {
       window.alert('EthSwap contract not deployed to connected network.')
     }
@@ -79,7 +79,7 @@ export class Web3Service {
 
   //This function gets Token balance from smart contract.
   async getTokenBalance(account: string) {
-    let tokenBalance = await this.goldStack.methods.balanceOf(account).call();
+    let tokenBalance = await this.netherite.methods.balanceOf(account).call();
     return tokenBalance;
   }
 
