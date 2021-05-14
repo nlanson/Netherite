@@ -4,7 +4,7 @@ contract Netherite {
     string  public name = "Netherite";
     string  public symbol = "NETH";
     uint256 public totalSupply = 1000000000000000000000000; // 1 million tokens
-    uint8   public decimals = 18;
+    uint8   public decimals = 18; //Not recommended to change
 
     event Transfer(
         address indexed _from,
