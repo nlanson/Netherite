@@ -61,9 +61,9 @@ export class Web3Service {
     }
 
 
-    const goldSwapData = NetherSwap.networks[networkID];
-    if ( goldSwapData ) {
-      this.netherSwap = new window.web3.eth.Contract(NetherSwap.abi, goldSwapData.address);
+    const netherSwapData = NetherSwap.networks[networkID];
+    if ( netherSwapData ) {
+      this.netherSwap = new window.web3.eth.Contract(NetherSwap.abi, netherSwapData.address);
     } else {
       window.alert('EthSwap contract not deployed to connected network.')
     }
@@ -83,22 +83,37 @@ export class Web3Service {
     return tokenBalance;
   }
 
-  async buyTokens(etherAmount: string, account: string): Promise<void> {
+  async buyTokens(etherAmount: number, account: string): Promise<void> {
     return new Promise((resolve, reject) => {
       this.netherSwap.methods.buyTokens()
       .send({value: etherAmount, from: account})
       .on('transactionHash', (hash) => {
         resolve();
+      }).catch(e => {
+        reject();
       });
     });
   }
 
   async sellTokens(tokenAmount: string, account: string): Promise<void> {
     return new Promise((resolve, reject) => {
-      this.netherSwap.methods.sellTokens(tokenAmount)
-      .send({from: account})
+      //Approve
+      this.netherite.methods.approve(this.netherSwap._address, tokenAmount)
+      .send({ from: account })
       .on('transactionHash', (hash) => {
-        resolve();
+        //Then sell
+        this.netherSwap.methods.sellTokens(tokenAmount)
+        .send({from: account})
+        .on('transactionHash', (hash) => {
+          resolve();
+        })
+        .catch(e => {
+          reject();
+        });
+
+      })
+      .catch(e => {
+        reject();
       });
     });
   }

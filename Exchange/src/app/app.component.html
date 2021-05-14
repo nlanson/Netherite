@@ -1,25 +1,15 @@
 <Nav *ngIf='!loading' [account]="account"></Nav>
 
 
-<div *ngIf="loading">
+<div *ngIf="loading" class='centre'>
   loading...
-</div>
-
-<div *ngIf="!loading">
-  Yay!
-  <br><br>
-  You are using account: {{ account }}
-  <br>
-  It has a balance of {{ balance }} ETH
-  <br>
-  It has {{ nethBalance }} Netherite in it's inventory
 </div>
 
 <br>
 
-<div *ngIf="!loading" class='actions'>
-  <Buy *ngIf='action == "buy"'></Buy>
+<div *ngIf="!loading" class='actions centre'>
+  <Buy *ngIf='action == "buy"' [account]='account'></Buy>
 
-  <Sell *ngIf='action == "sell"'></Sell>
+  <Sell *ngIf='action == "sell"' [account]='account'></Sell>
 </div>
 

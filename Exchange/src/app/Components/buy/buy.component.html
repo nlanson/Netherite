@@ -1,8 +1,38 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Buy Netherite</mat-card-title>
-    <mat-card-subtitle>1 ETH = 64 Netherite</mat-card-subtitle>
-  </mat-card-header>
-</mat-card>
 
-<!-- Just need to add reactive forms to buy and sell tokens.-->
+<div class='border'>
+  <mat-card *ngIf='!processing'>
+    <mat-card-header>
+      <mat-card-title class='text-lightblue text-underline'>Buy Netherite</mat-card-title>
+      <mat-card-subtitle>1 Eth = 64 Netherite</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class='margin-left'>
+      <form [formGroup]='buyForm' (ngSubmit)='buy()'>
+        <span>
+          You send:
+        </span>
+        <mat-form-field appearance="fill" required [style.width.%]=100 class='point2-font'>
+          <mat-label>Ethereum</mat-label>
+          <input matInput formControlName="ethAmount" type='number' autocomplete="off">
+        </mat-form-field>
+
+        <br>
+
+        <span>
+          You receive:
+        </span>
+        <mat-form-field appearance="fill" [style.width.%]=100 class='point2-font'>
+          <mat-label> {{ receiveAmount }} Netherite</mat-label>
+          <input matInput disabled>
+        </mat-form-field>
+
+        <div mat-dialog-actions>
+          <button mat-stroked-button class='button-outline-lightblue text-lightblue width-max point5-font' type='submit'>
+            Swap
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <p *ngIf='processing' class='point5-font centre-text margins'> Processing... </p>
+</div>

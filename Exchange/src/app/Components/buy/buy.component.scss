@@ -4,5 +4,70 @@
   width: 600px;
 }
 
+.border {
+  border: 2px solid white;
+}
+
+.button-outline-lightblue {
+  border: 2px solid #03FFFB !important;
+}
+
+.text-lightblue {
+  color: #03FFFB !important;
+}
+
+.text-underline {
+  text-decoration: underline;
+  text-decoration-color: white;
+}
+
+.margin-left {
+  margin-left: 2%;
+}
+
+.width-max {
+  width: 100%
+}
+
+.point5-font {
+  font-size: 1.5em;
+}
+
+.point2-font {
+  font-size: 1.2em;
+}
+
+.centre-text {
+  text-align: center;
+}
+
+.margins {
+  margin: 3%;
+}
+
+mat-card {
+  background-color: #2C2E3E;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: white !important;
+ }
+
+ ::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: white !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+ /*change color of underline when focused*/
+ background-color: white !important;;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+
 
 
