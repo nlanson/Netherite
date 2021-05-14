@@ -11,8 +11,15 @@
 
 .link {
   color: #FF4574;
+  margin-right: 1%;
 }
 
 .link:hover {
   text-decoration: underline;
+}
+
+.identicon {
+  background: white;
+  border: 3px solid #FF4574;
+  border-radius: 25%;
 }

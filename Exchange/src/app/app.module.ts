@@ -11,6 +11,7 @@ import { NavComponent } from './Components/nav/nav.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    NgxJdenticonModule
+    NgxJdenticonModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

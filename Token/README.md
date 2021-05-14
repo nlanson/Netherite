@@ -1,2 +1,2 @@
-# GoldStack
-GoldStack ERC20 Token implementation and Basic Exchange
+# Netherite Token
+ERC-20 Template Token Contract + Basic Swap Contract.

@@ -10,6 +10,6 @@ module.exports = async function(deployer) {
   await deployer.deploy(NetherSwap, netherite.address);
   const netherSwap = await NetherSwap.deployed();
 
-  //Transfer all tokens to EthSwap.
+  //Transfer all tokens to Swap.
   netherite.transfer(netherSwap.address, '1000000000000000000000000');
 };
