@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Web3Service } from './Services/web3.service';
 
+type Action = 'buy' | 'sell';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,6 +14,8 @@ export class AppComponent implements OnInit{
   account: string;
   balance: any;
   nethBalance: any;
+
+  action: Action = 'buy';
 
   constructor(
     public web3Service: Web3Service

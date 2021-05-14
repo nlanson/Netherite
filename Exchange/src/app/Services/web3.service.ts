@@ -48,14 +48,6 @@ export class Web3Service {
     this.accounts = await web3.eth.requestAccounts();
   }
 
-  //Get Ether Balance of Account.
-  async getEtherBalance(account: string): Promise<string> {
-    const web3 = window.web3;
-
-    let bal = await web3.eth.getBalance(account);
-    return web3.utils.fromWei(bal, 'ether');
-  }
-
   //This function will load the smart contracts.
   async loadContracts() {
     const networkID = await window.web3.eth.net.getId(); //Get the current network ID that metamask is connected to.
@@ -77,10 +69,38 @@ export class Web3Service {
     }
   }
 
+  //Get Ether Balance of Account.
+  async getEtherBalance(account: string): Promise<string> {
+    const web3 = window.web3;
+
+    let bal = await web3.eth.getBalance(account);
+    return web3.utils.fromWei(bal, 'ether');
+  }
+
   //This function gets Token balance from smart contract.
   async getTokenBalance(account: string) {
     let tokenBalance = await this.netherite.methods.balanceOf(account).call();
     return tokenBalance;
+  }
+
+  async buyTokens(etherAmount: string, account: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.netherSwap.methods.buyTokens()
+      .send({value: etherAmount, from: account})
+      .on('transactionHash', (hash) => {
+        resolve();
+      });
+    });
+  }
+
+  async sellTokens(tokenAmount: string, account: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.netherSwap.methods.sellTokens(tokenAmount)
+      .send({from: account})
+      .on('transactionHash', (hash) => {
+        resolve();
+      });
+    });
   }
 
 }

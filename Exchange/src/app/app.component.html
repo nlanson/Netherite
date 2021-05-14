@@ -1,3 +1,6 @@
+<Nav *ngIf='!loading' [account]="account"></Nav>
+
+
 <div *ngIf="loading">
   loading...
 </div>
@@ -11,3 +14,12 @@
   <br>
   It has {{ nethBalance }} Netherite in it's inventory
 </div>
+
+<br>
+
+<div *ngIf="!loading" class='actions'>
+  <Buy *ngIf='action == "buy"'></Buy>
+
+  <Sell *ngIf='action == "sell"'></Sell>
+</div>
+

@@ -1,0 +1,116 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$my-primary-palette: (
+  50 : #e6e6e8,
+  100 : #c0c0c5,
+  200 : #96979f,
+  300 : #6b6d78,
+  400 : #4c4d5b,
+  500 : #2c2e3e,
+  600 : #272938,
+  700 : #212330,
+  800 : #1b1d28,
+  900 : #10121b,
+  A100 : #5f73ff,
+  A200 : #2c47ff,
+  A400 : #001ff8,
+  A700 : #001cdf,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #ffffff,
+      400 : #ffffff,
+      500 : #ffffff,
+      600 : #ffffff,
+      700 : #ffffff,
+      800 : #ffffff,
+      900 : #ffffff,
+      A100 : #ffffff,
+      A200 : #ffffff,
+      A400 : #ffffff,
+      A700 : #ffffff,
+  )
+);
+
+$my-secondary-palette: (
+    50 : #ffe9ee,
+    100 : #ffc7d5,
+    200 : #ffa2b9,
+    300 : #ff7c9d,
+    400 : #ff6088,
+    500 : #ff4473,
+    600 : #ff3e6b,
+    700 : #ff3560,
+    800 : #ff2d56,
+    900 : #ff1f43,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffced5,
+    A700 : #ffb5bf,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$my-tertiary-palette: (
+  50 : #e0fcff,
+  100 : #b3f7ff,
+  200 : #80f2ff,
+  300 : #4decfe,
+  400 : #26e8fe,
+  500 : #00e4fe,
+  600 : #00e1fe,
+  700 : #00ddfe,
+  800 : #00d9fe,
+  900 : #00d1fd,
+  A100 : #ffffff,
+  A200 : #f1fcff,
+  A400 : #bef2ff,
+  A700 : #a4edff,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #000000,
+      500 : #000000,
+      600 : #000000,
+      700 : #000000,
+      800 : #000000,
+      900 : #000000,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+  )
+);
+
+
+
+$my-theme-primary: mat-palette($my-primary-palette);
+$my-theme-secondary: mat-palette($my-secondary-palette);
+$my-theme-tertiary: mat-palette($my-tertiary-palette);
+$my-theme-warn: mat-palette($mat-red);
+
+$my-theme: mat-dark-theme($my-theme-primary, $my-theme-secondary, $my-theme-warn);
+
+@include angular-material-theme($my-theme);
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #2C2E3E; color: white }
+

@@ -1,0 +1,18 @@
+@use 'sass:map';
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.heading {
+  color: white;
+  font-size: 1.5em;
+}
+
+.link {
+  color: #FF4574;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
