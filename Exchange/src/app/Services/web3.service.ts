@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import Netherite from '../../../../Token/Netherite/abis/Netherite.json';
-import NetherSwap from '../../../../Token/Netherite/abis/NetherSwap.json';
+import Netherite from './abis/Netherite.json';
+import NetherSwap from './abis/NetherSwap.json';
 
 declare let window: any;
 
@@ -56,6 +56,7 @@ export class Web3Service {
     const tokenData = Netherite.networks[networkID];
     if ( tokenData ) {
       this.netherite = new window.web3.eth.Contract(Netherite.abi, tokenData.address);
+      console.log('Netherite token contract loaded');
     } else {
       window.alert('Token contract not deployed to connected network.')
     }
@@ -64,6 +65,7 @@ export class Web3Service {
     const netherSwapData = NetherSwap.networks[networkID];
     if ( netherSwapData ) {
       this.netherSwap = new window.web3.eth.Contract(NetherSwap.abi, netherSwapData.address);
+      console.log('NetherSwap contract loaded');
     } else {
       window.alert('EthSwap contract not deployed to connected network.')
     }
@@ -71,7 +73,7 @@ export class Web3Service {
 
   //Detect Network.
   async detectNetwork() {
-    let network = await window.web3.eth.net.getNetworkType();
+    let network: string = await window.web3.eth.net.getNetworkType();
     return network;
   }
 

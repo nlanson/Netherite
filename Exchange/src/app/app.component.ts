@@ -34,6 +34,8 @@ export class AppComponent implements OnInit{
     this.account = this.web3Service.accounts[0];
 
     let network = await this.web3Service.detectNetwork();
+
+    //Only load the contracts and contract related data IF the network is Ropsten.
     if (network == 'ropsten') {
       await this.web3Service.loadContracts();
       this.balance = await this.web3Service.getEtherBalance(this.account);
@@ -41,7 +43,6 @@ export class AppComponent implements OnInit{
 
       this.loading = false;
     } else {
-      window.alert("You need to be using the Ropsten Test Network for Netherite to load.");
       this.correctNetwork = false;
     }
   }
