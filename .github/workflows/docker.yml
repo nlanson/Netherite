@@ -21,7 +21,7 @@ jobs:
 
       - name: Docker Build
         run: |
-          docker build -t nlanson/netherswap:latest ./Bot
+          docker build -t nlanson/netherswap:latest ./Exchange
       
       - name: Docker Push
         run: |
