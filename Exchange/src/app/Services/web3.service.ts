@@ -31,11 +31,12 @@ export class Web3Service {
       window.web3 = new window.Web3(window.ethereum);
       await window.ethereum.enable;
     } else if (window.web3) {
-      console.log('Web3 Detected.')
+      console.log('Web3 Detected.');
       this.isWeb3 = true;
       window.web3 = new window.Web3(window.web3.currentProvider);
     } else {
-      console.log('Web3 not Detected.')
+      console.log('Web3 not Detected.');
+      window.alert('Web3 was not detected. Consider using MetaMask!')
       this.isWeb3 = false;
     }
 
