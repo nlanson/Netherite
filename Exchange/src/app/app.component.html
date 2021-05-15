@@ -1,13 +1,17 @@
-<Nav *ngIf='!loading' [account]="account"></Nav>
+<Nav [account]="account"></Nav>
 
 
-<div *ngIf="loading" class='centre'>
+<div *ngIf="loading && correctNetwork" class='centre'>
   loading...
+</div>
+
+<div *ngIf='!correctNetwork' class='centre'>
+  <span> Please connect to the Ropsten Test Network </span>
 </div>
 
 <br>
 
-<div *ngIf="!loading" class='actions centre'>
+<div *ngIf="!loading && correctNetwork" class='actions centre'>
   <Buy *ngIf='action == "buy"' [account]='account'></Buy>
 
   <Sell *ngIf='action == "sell"' [account]='account'></Sell>

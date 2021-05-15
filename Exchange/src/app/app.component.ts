@@ -10,6 +10,7 @@ type Action = 'buy' | 'sell';
 })
 export class AppComponent implements OnInit{
   loading: boolean = true;
+  correctNetwork: boolean = true;
 
   account: string;
   balance: any;
@@ -30,12 +31,19 @@ export class AppComponent implements OnInit{
 
     await this.web3Service.connectWeb3();
     await this.web3Service.loadAccounts();
-    await this.web3Service.loadContracts();
-
     this.account = this.web3Service.accounts[0];
-    this.balance = await this.web3Service.getEtherBalance(this.account);
-    this.nethBalance = await this.web3Service.getTokenBalance(this.account);
 
-    this.loading = false;
+    let network = await this.web3Service.detectNetwork();
+    if (network == 'ropsten') {
+      await this.web3Service.loadContracts();
+      this.balance = await this.web3Service.getEtherBalance(this.account);
+      this.nethBalance = await this.web3Service.getTokenBalance(this.account);
+
+      this.loading = false;
+    } else {
+      window.alert("You need to be using the Ropsten Test Network for Netherite to load.");
+      this.correctNetwork = false;
+    }
   }
+
 }

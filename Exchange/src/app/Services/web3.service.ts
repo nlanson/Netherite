@@ -69,6 +69,12 @@ export class Web3Service {
     }
   }
 
+  //Detect Network.
+  async detectNetwork() {
+    let network = await window.web3.eth.net.getNetworkType();
+    return network;
+  }
+
   //Get Ether Balance of Account.
   async getEtherBalance(account: string): Promise<string> {
     const web3 = window.web3;
