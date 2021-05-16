@@ -4,6 +4,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Web3Service } from '../../Services/web3.service';
 
 declare let window: any;
+type Error = {
+  error: boolean;
+  message: string;
+}
 
 @Component({
   selector: 'Buy',
@@ -17,6 +21,10 @@ export class BuyComponent implements OnInit {
   buyForm: FormGroup;
   receiveAmount: number = 0;
   processing: boolean = true;
+  error: Error = {
+    error: false,
+     message: 'No errors'
+  };
 
   constructor(
     private fb: FormBuilder,
@@ -35,13 +43,48 @@ export class BuyComponent implements OnInit {
     this.processing = false;
   }
 
-  async buy() {
-    let ethAmount: number = window.web3.utils.toWei(this.buyForm.value.ethAmount.toString());
+  async buy(): Promise<void> {
     this.processing = true;
-    await this.web3Service.buyTokens(ethAmount, this.account);
+    this.resetError();
+    let ethAmount: string;
+
+    try {
+      //Fix ethAmount to Wei.
+      ethAmount = window.web3.utils.toWei(this.buyForm.value.ethAmount.toString());
+    } catch(e) {
+      this.error = {
+        error: true,
+        message: 'Invalid Input'
+      }
+      this.processing = false;
+      return;
+    }
+
+
+    //Check if user has enough Eth.
+    let ethBalance: string = await this.web3Service.getEtherBalance(this.account);
+    //Fix balance to Wei.
+    ethBalance = window.web3.utils.toWei(ethBalance);
+    if ( Number(ethBalance) <= Number(ethAmount) ) {
+      this.error = {
+        error: true,
+        message: `Insufficient Eth Balance. (Max Approx: ${Number(window.web3.utils.fromWei(ethBalance)).toFixed(2)})`
+      }
+      this.processing = false;
+      return;
+    }
+
+    await this.web3Service.buyTokens(Number(ethAmount), this.account);
     this.processing = false;
 
     this.buyForm.reset();
+  }
+
+  resetError(): void {
+    this.error = {
+      error: false,
+      message: 'No errors'
+    };
   }
 
 }
