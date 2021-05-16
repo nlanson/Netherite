@@ -63,8 +63,6 @@ export class BuyComponent implements OnInit {
 
     //Check if user has enough Eth.
     let ethBalance: string = await this.web3Service.getEtherBalance(this.account);
-    //Fix balance to Wei.
-    ethBalance = window.web3.utils.toWei(ethBalance);
     if ( Number(ethBalance) <= Number(ethAmount) ) {
       this.error = {
         error: true,

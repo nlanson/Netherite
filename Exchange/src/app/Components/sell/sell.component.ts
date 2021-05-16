@@ -5,6 +5,11 @@ import { Web3Service } from '../../Services/web3.service';
 
 declare let window: any;
 
+type Error = {
+  error: boolean,
+  message: string
+}
+
 @Component({
   selector: 'Sell',
   templateUrl: './sell.component.html',
@@ -17,6 +22,10 @@ export class SellComponent implements OnInit {
   sellForm: FormGroup;
   receiveAmount: number = 0;
   processing: boolean = true;
+  error: Error = {
+    error: false,
+     message: 'No errors'
+  };
 
   constructor(
     private fb: FormBuilder,
@@ -36,13 +45,44 @@ export class SellComponent implements OnInit {
   }
 
   async sell() {
-    let netheriteAmount: string = window.web3.utils.toWei(this.sellForm.value.netheriteAmount.toString(), 'ether');
     this.processing = true;
+    this.resetError();
+    let netheriteAmount: string;
+
+    try {
+      //Fix Netherite amount to Wei.
+      netheriteAmount = window.web3.utils.toWei(this.sellForm.value.netheriteAmount.toString());
+    } catch (e) {
+      this.error = {
+        error: true,
+        message: 'Invalid Input'
+      }
+    }
+
+    //Check if user has enough Netherite.
+    let tokenBalance: string = await this.web3Service.getTokenBalance(this.account);
+    console.log(Number(tokenBalance) <= Number(netheriteAmount));
+    if ( Number(tokenBalance) <= Number(netheriteAmount) ) {
+      this.error = {
+        error: true,
+        message: `Insufficient Nether Balance. (Max Approx: ${Number(window.web3.utils.fromWei(tokenBalance)).toFixed(2)})`
+      }
+      this.processing = false;
+      return;
+    }
+
 
     await this.web3Service.sellTokens(netheriteAmount.toString(), this.account);
     this.processing = false;
 
     this.sellForm.reset();
+  }
+
+  resetError() {
+    this.error = {
+      error: false,
+      message: 'No errors'
+    };
   }
 
 }

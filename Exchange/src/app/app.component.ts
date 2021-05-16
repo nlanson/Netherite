@@ -13,8 +13,6 @@ export class AppComponent implements OnInit{
   correctNetwork: boolean = true;
 
   account: string;
-  balance: any;
-  nethBalance: any;
 
   action: Action = 'buy';
 
@@ -38,9 +36,6 @@ export class AppComponent implements OnInit{
     //Only load the contracts and contract related data IF the network is Ropsten.
     if (network == 'ropsten') {
       await this.web3Service.loadContracts();
-      this.balance = await this.web3Service.getEtherBalance(this.account);
-      this.nethBalance = await this.web3Service.getTokenBalance(this.account);
-
       this.loading = false;
     } else {
       this.correctNetwork = false;

@@ -10,6 +10,9 @@
         <span>
           You send:
         </span>
+        <div *ngIf='error.error' class='error red-text'>
+          <span>* {{error.message}}</span>
+        </div>
         <mat-form-field appearance="fill" required [style.width.%]=100 class='point2-font'>
           <mat-label>Netherite</mat-label>
           <input matInput formControlName="netheriteAmount" type='number' autocomplete="off">

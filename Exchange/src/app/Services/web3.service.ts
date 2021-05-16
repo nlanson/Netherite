@@ -83,7 +83,7 @@ export class Web3Service {
     const web3 = window.web3;
 
     let bal = await web3.eth.getBalance(account);
-    return web3.utils.fromWei(bal, 'ether');
+    return bal;
   }
 
   //This function gets Token balance from smart contract.
