@@ -1,6 +1,6 @@
 # Angular x Ethereum
 Proof of Concept Angular ERC-20 Token Exchange.\
-Deployed on the Ropsten Test Network.
+Deployed on the Ropsten Test Network.\
 Address: `0xEDedf42f1dC5146c9Cf2cf2cb09e50dfc5835293`
 
 ## Netherite
