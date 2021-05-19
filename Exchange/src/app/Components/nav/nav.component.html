@@ -5,5 +5,9 @@
 
 <span class='link' *ngIf='action == "buy"' (click)='changeAction()'> Sell </span>
 <span class='link' *ngIf='action == "sell"' (click)='changeAction()'> Buy </span>
-<svg class='identicon' width="2em" height="2em" [data-jdenticon-value]='account'></svg> <!--Jdenticon-->
+<svg class='identicon' width="2em" height="2em" [data-jdenticon-value]='account' [matMenuTriggerFor]="menu"></svg> <!--Jdenticon-->
 </mat-toolbar>
+
+<mat-menu #menu="matMenu">
+  <Balance [account]="account"></Balance>
+</mat-menu>

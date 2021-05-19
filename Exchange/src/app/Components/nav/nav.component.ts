@@ -10,7 +10,7 @@ type Action = 'buy' | 'sell';
 })
 export class NavComponent implements OnInit {
 
-  @Input() account: string;
+  @Input() public account: string;
 
   action: Action;
 

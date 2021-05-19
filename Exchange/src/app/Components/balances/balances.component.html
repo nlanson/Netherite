@@ -1,0 +1,17 @@
+<div class='container'>
+  <h2 class='light-blue white-underline'> Your account: </h2>
+  <span><span class='pink'>Account:</span> {{ account.substring(0, 6) }}...{{ account.substring(account.length-4, account.length) }}</span>
+  <br>
+  <span *ngIf='eth'><span class='pink'>Ether Bal:</span> {{ eth.toFixed(2) }}</span>
+  <br>
+  <span *ngIf='netherite'><span class='pink'>Nether Bal:</span> {{ netherite.toFixed(2) }}</span>
+  <br>
+  <br>
+  <button mat-stroked-button class='button-outline-pink pink width-max point5-font margin-bottom' (click)='openEtherScan()'>
+    View on Etherscan
+  </button>
+  <br>
+  <button mat-stroked-button class='button-outline-lightblue light-blue width-max point5-font' (click)='openSource()'>
+    Sauce?
+  </button>
+</div>

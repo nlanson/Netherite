@@ -9,20 +9,24 @@ import { AppComponent } from './app.component';
 import { BuyComponent } from './Components/buy/buy.component';
 import { SellComponent } from './Components/sell/sell.component';
 import { NavComponent } from './Components/nav/nav.component';
+import { BalanceComponent } from './Components/balances/balances.component';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
+import {MatMenuModule} from '@angular/material/menu';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     BuyComponent,
     SellComponent,
-    NavComponent
+    NavComponent,
+    BalanceComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,8 @@ import {MatInputModule} from '@angular/material/input';
     MatCardModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

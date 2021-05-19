@@ -78,17 +78,25 @@ export class Web3Service {
     return network;
   }
 
+  //Listens for account change in metamask.
+  listenForAccountChange() {
+    window.ethereum.on('accountsChanged', function (accounts) {
+      console.log('Account change detected.')
+      location.reload();
+    });
+  }
+
   //Get Ether Balance of Account.
   async getEtherBalance(account: string): Promise<string> {
     const web3 = window.web3;
 
-    let bal = await web3.eth.getBalance(account);
+    let bal: string = await web3.eth.getBalance(account);
     return bal;
   }
 
   //This function gets Token balance from smart contract.
-  async getTokenBalance(account: string) {
-    let tokenBalance = await this.netherite.methods.balanceOf(account).call();
+  async getTokenBalance(account: string): Promise<string> {
+    let tokenBalance: string = await this.netherite.methods.balanceOf(account).call();
     return tokenBalance;
   }
 

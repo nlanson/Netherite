@@ -1,4 +1,4 @@
-<Nav [account]="account"></Nav>
+<Nav *ngIf='account' [account]="account"></Nav>
 
 
 <div *ngIf="loading && correctNetwork" class='centre'>
