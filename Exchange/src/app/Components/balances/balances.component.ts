@@ -31,6 +31,7 @@ export class BalanceComponent implements OnInit {
   }
 
   openEtherScan() {
+    //Open token contact address.
     window.open('https://ropsten.etherscan.io/address/0xEDedf42f1dC5146c9Cf2cf2cb09e50dfc5835293', '_blank');
   }
 
